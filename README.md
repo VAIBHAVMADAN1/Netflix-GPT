@@ -4,8 +4,11 @@
 - Configured TailwindCSS
 - npm i -D react-router-dom
 - Header
+- Routing of App
 - Login Form
 - Sign up form
+- Form Validation
+- useRef Hook
 
 # Features
 - LogIn/SignIn
