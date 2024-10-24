@@ -1,10 +1,17 @@
-import React, {useState, useRef} from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 
 import { checkValidData } from '../utils/validate';
+
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import {auth} from "../utils/firebase";
+import { onAuthStateChanged } from "firebase/auth";
+
+import { useNavigate } from 'react-router-dom';
 
 import Header from "./Header";
 
 const Login = () => {
+    const navigate = useNavigate();
     const [isLoginForm, setIsLoginForm] = useState(true);
 
     const name = useRef(null);
@@ -15,7 +22,54 @@ const Login = () => {
     function handleButtonClick() {
         const message = checkValidData((!isLoginForm ? name.current.value : "name"), email.current.value, password.current.value)
         setErrorMessage(message);
+
+        if (message) return;
+
+        if (!isLoginForm) {
+            createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
+                .then((userCredential) => {
+                    // Signed up 
+                    const user = userCredential.user;
+                    // console.log(user);
+                    navigate("/browse");
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    setErrorMessage(errorCode + '-' + errorMessage);
+                });
+        }
+        else{
+            signInWithEmailAndPassword(auth, email.current.value, password.current.value)
+                .then((userCredential) => {
+                    // Signed in 
+                    const user = userCredential.user;
+                    // console.log(user);
+                    navigate("/browse");
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    setErrorMessage(errorCode + '-' + errorMessage);
+                });
+        }
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                // User is signed in, see docs for a list of available properties
+                // https://firebase.google.com/docs/reference/js/auth.user
+                const { uid, email, displayName } = user.uid;
+                console.log(uid);
+                // ...
+            } else {
+                // User is signed out
+                // ...
+            }
+        });
     }
+
+
+
+
     return (
         <div>
             <Header />
@@ -30,6 +84,7 @@ const Login = () => {
                     <h1 className="text-2xl mb-2">{isLoginForm ? "Sign In" : "Sign Up"}</h1>
                     {!isLoginForm && <input
                         ref={name}
+                        defaultValue="Name"
                         type="text"
                         placeholder="Name"
                         className="block w-full mb-4 p-2 bg-gray-700"

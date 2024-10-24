@@ -9,6 +9,13 @@
 - Sign up form
 - Form Validation
 - useRef Hook
+- Firebase
+- Deployed app to production
+- Create sign-up/sign-in in firebase
+- Create Redux store with userSlice
+- Update user slice with user-info
+- Implemented sign out
+- Updated profile api call
 
 # Features
 - LogIn/SignIn
@@ -23,3 +30,5 @@
         - Movie lists
 - GPT search bar
     - movie suggestions
+
+
