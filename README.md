@@ -17,6 +17,7 @@
 - Implemented sign out
 - Updated profile api call
 
+
 # Features
 - LogIn/SignIn
     - form
