@@ -11,7 +11,7 @@ const VideoBackground = ({ movieId }) => {
     {/* <div className="fixed inset-0 w-full h-full z-[-1]"> */}
       <iframe
         className="w-full h-full"
-        src={`https://www.youtube.com/embed/${movieTrailer}?autoplay=1&mute=1&controls=0&disablekb=1&loop=1`}
+        src={`https://www.youtube.com/embed/${movieTrailer}?autoplay=1&mute=1&controls=0&disablekb=1&loop=1&cc_load_policy=3`}
         title="YouTube video player"
         referrerPolicy="strict-origin-when-cross-origin"
       />
