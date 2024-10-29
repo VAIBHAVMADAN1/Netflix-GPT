@@ -48,7 +48,7 @@ const Header = () => {
   }
   const user = useSelector((state)=>state.user);
   return (
-      <div className="absolute w-full bg-gradient-to-b from-black z-10 text-white flex justify-between">
+    <div className="absolute top-0 left-0 w-full bg-gradient-to-b from-black to-transparent z-20 text-white flex justify-between items-center px-4 py-4">
         <img src={LOGO}
           alt="netflix logo"
           className="w-40" />
