@@ -16,6 +16,8 @@
 - Update user slice with user-info
 - Implemented sign out
 - Updated profile api call
+- Bugfix: added dispatch to onAuthStateChanged
+- Bugfix: If the user is not logged in, re-direct to /
 
 
 # Features
