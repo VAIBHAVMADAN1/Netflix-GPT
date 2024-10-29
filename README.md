@@ -18,6 +18,10 @@
 - Updated profile api call
 - Bugfix: added dispatch to onAuthStateChanged
 - Bugfix: If the user is not logged in, re-direct to /
+- Registered for TMDB api, created an app and got access token
+- Got Data from TMBD api
+- Create a movies redux store and add data to it
+- abstract it to useNowPlayingMovies hook
 
 
 # Features
