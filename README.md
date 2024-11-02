@@ -23,6 +23,8 @@
 - Create a movies redux store and add data to it
 - abstract it to useNowPlayingMovies hook
 - SecondaryContainer entirely complete
+- GPT search feature
+- Multi language support
 
 
 # Features

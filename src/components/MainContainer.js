@@ -8,8 +8,8 @@ import VideoBackground from './VideoBackground';
 const MainContainer = () => {
     const movies = useSelector(store => store.movies.nowPlayingMovies);
     if (!movies) return;
-    let randomIndex = Math.floor(Math.random() * movies.length);
-    const movie = movies[randomIndex];
+    // let randomIndex = Math.floor(Math.random() * movies.length);
+    const movie = movies[5];
     return (
         <div className="relative">
             <VideoTitle title={movie.title} overview={movie.overview} />
@@ -17,5 +17,4 @@ const MainContainer = () => {
         </div>
     )
 }
-
 export default MainContainer

@@ -6,8 +6,8 @@ const VideoList = ({ movies, title }) => {
     return !movies ? [] : (
         <div className="m-4">
             <h1 className="text-3xl">{title}</h1>
-            <div class="flex overflow-x-scroll">
-                {movies.map(movie => <VideoCard movie={movie} />)}
+            <div className="flex overflow-x-scroll">
+                {movies.map(movie => <VideoCard key={movie.id} movie={movie} />)}
             </div>
         </div>
     )

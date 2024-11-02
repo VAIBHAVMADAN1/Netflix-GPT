@@ -7,10 +7,14 @@ import { auth } from "../utils/firebase";
 
 import { useDispatch } from 'react-redux';
 import { addUser, removeUser } from '../utils/userSlice';
+import { toggleGptState } from '../utils/gptSlice';
 
 import { useNavigate } from 'react-router-dom';
 
 import {LOGO} from "../utils/constants";
+
+import { SUPPORTED_LANGUAGES } from '../utils/constants';
+import { changeLanguage } from '../utils/languageSlice';
 
 
 const Header = () => {
@@ -46,16 +50,34 @@ const Header = () => {
     });
   }
   const user = useSelector((state)=>state.user);
+
+  const {gptState} = useSelector(state=>state.gpt);
+  console.log(gptState);
+  function toggleGptSearch() {
+    dispatch(toggleGptState());
+  }
+
+  function handleLanguageChange(e) {
+    dispatch(changeLanguage(e.target.value))
+  }
   return (
     <div className="absolute top-0 left-0 w-full bg-gradient-to-b from-black to-transparent z-20 text-white flex justify-between items-center px-4 py-4">
         <img src={LOGO}
           alt="netflix logo"
           className="w-40" />
-        
         {user && (<div className="flex items-center">
           <img src={user?.photoURL}
             alt="user-logo"
             className="h-8 mr-2" />
+        {gptState && (
+          <select className="bg-black border-solid border-white"
+            onChange={e => handleLanguageChange(e)}>
+            {SUPPORTED_LANGUAGES.map(language => (
+              <option key={language.identifier} value={language.identifier}>{language.name}</option>
+            ))}
+          </select>
+        )}
+          <button className="font-bold bg-purple-500 text-white px-4 py-2 m-2" onClick={toggleGptSearch}>{!gptState ? "GPT Search" : "Main page"}</button>
           <button className="font-bold" onClick={handleSignOut}>(Sign out)</button>
         </div>)}
       </div>
