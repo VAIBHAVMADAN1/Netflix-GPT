@@ -25,7 +25,8 @@
 - SecondaryContainer entirely complete
 - GPT search feature
 - Multi language support
-
+- Memoization
+- Media queries
 
 
 # Features

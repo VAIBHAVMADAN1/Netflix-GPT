@@ -78,7 +78,7 @@ const Login = () => {
                     className="w-full h-screen object-cover"
                 />
                 <form onSubmit={e => e.preventDefault()}
-                className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-1/4 bg-black text-white bg-opacity-70 p-6 rounded-lg text-center">
+                    className="w-3/5 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-black text-white bg-opacity-70 rounded-lg text-center md:w-1/4 p-6">
 
                     <h1 className="text-2xl mb-2">{isLoginForm ? "Sign In" : "Sign Up"}</h1>
                     {!isLoginForm && <input

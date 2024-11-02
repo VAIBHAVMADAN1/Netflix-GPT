@@ -61,7 +61,7 @@ const Header = () => {
     dispatch(changeLanguage(e.target.value))
   }
   return (
-    <div className="absolute top-0 left-0 w-full bg-gradient-to-b from-black to-transparent z-20 text-white flex justify-between items-center px-4 py-4">
+    <div className="absolute top-0 left-0 w-full bg-gradient-to-b from-black to-transparent z-20 text-white flex flex-col justify-between items-center sm:flex-row px-4 py-4">
         <img src={LOGO}
           alt="netflix logo"
           className="w-40" />
@@ -77,8 +77,10 @@ const Header = () => {
             ))}
           </select>
         )}
+        <div className="w-full">
           <button className="font-bold bg-purple-500 text-white px-4 py-2 m-2" onClick={toggleGptSearch}>{!gptState ? "GPT Search" : "Main page"}</button>
           <button className="font-bold" onClick={handleSignOut}>(Sign out)</button>
+        </div>
         </div>)}
       </div>
   )
